@@ -1,17 +1,32 @@
 /**
- Ce programme permet de représenter
+ Ce programme permet de représenter une cartographie des ensembles de julia se trouvant dans le rectangle délimité par min_x_+ i * min_y_ et max_x_+ i * max_y_. 
+ Il est possible de changer la densité de points en changeant les valeurs de largeur et hauteur, la précision en changeant la valeur nb_d_iterations et le nombre
+ d'ensemble de Julia en changeant la valeur de nb_y. Tout ces changements risquent de changer la vitesse d'éxecution du programme. Il est aussi possible de changer
+ la couleur de la représentation et l'ordre c'est à dire la puissance à laquelle le nombre complexe va être élevé (voir https://fr.wikipedia.org/wiki/Ensemble_de_Mandelbrot#G%C3%A9n%C3%A9ralisations_et_variantes)
+ Les paramètres par défauts rendent le programme lent mais le résultat est magnifique.
  */
+ 
+//variables à changer selon les envies
+int ordre=2;//par défault 2
+int nb_d_iterations=5000;//max 100000 aucune amélioration aprés en plus devient lent
+int nb_y =80;
+color couleur=color(255, 171, 0);//format RGB
+int largeur=200;
+int hauteur=200;
+String nom="final.jpg";
+ 
+//variables à changer selon les envies (mais risquent d'affecter l'orthonormalité du résultat)
+ 
+float min_x_=-2.2;//par défaut -2.2
+float max_x_=0.6;//par défaut 0.6
+float min_y_=0;//par défaut 0
+float max_y_=0.6;//par défaut 0.6
+float min_x=-1.8;//par défaut -1.8
+float max_x=1.8;//par défaut 1.8
+ 
+//Programme
 PGraphics big;
-int ordre=2;
 boolean grille=false;
-color couleur=color(255, 171, 0);
-int nb_d_iterations=2000;//max 100000 aucune amélioration aprés en plus devient lent
-float min_x_=-2.2;
-float max_x_=0.6;
-float min_y_=0;
-float max_y_=0.6;
-float min_x=-1.8;
-float max_x=1.8;
 float min_y;
 float max_y;
 float coef;
@@ -23,10 +38,6 @@ float b__=0.0;
 boolean clique;
 float[] point_de_depart;
 float[] point_actuel;
-int largeur=200;
-int hauteur=200;
-String nom="ours10.jpg";
-int nb_y =50;
 int nb =int(float(nb_y)*2.8);
 int compteur=0;
 color inverse(color initial) {
